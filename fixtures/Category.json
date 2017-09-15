@@ -1,0 +1,19 @@
+[
+  {
+    "model":"Category",
+    "items":[
+      {
+        "name":"PHP"
+      },
+      {
+        "name":"Symfony"
+      },
+      {
+        "name":"Versionning"
+      },
+      {
+        "name":"Autres"
+      }
+    ]
+  }
+]
