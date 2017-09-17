@@ -3,7 +3,81 @@
     "model":"Category",
     "items":[
       {
-        "name":"PHP"
+        "name":"PHP",
+        "questions": [
+          {
+            "name": "What does PHP mean ?",
+            "text": "What does PHP mean ?",
+            "order": 1,
+            "difficulty": 1,
+            "answers": [
+              {
+                "text": "PHP Hypertext Preprocessor",
+                "isCorrect": true
+              },
+              {
+                "text": "Personal Home Page",
+                "isCorrect": false
+              },
+              {
+                "text": "Perform Huge Processing",
+                "isCorrect": false
+              },
+              {
+                "text": "I don't know",
+                "isCorrect": false
+              }
+            ]
+          },
+          {
+            "name": "What language feature was introduced in PHP 7.0",
+            "text": "What language feature was introduced in PHP 7.0",
+            "order": 2,
+            "difficulty": 1,
+            "answers": [
+              {
+                "text": "Namespaces",
+                "isCorrect": false
+              },
+              {
+                "text": "Generators",
+                "isCorrect": false
+              },
+              {
+                "text": "Strict typing",
+                "isCorrect": true
+              },
+              {
+                "text": "I don't know",
+                "isCorrect": false
+              }
+            ]
+          },
+          {
+            "name": "What is PSR-2 ?",
+            "text": "What is PSR-2 ?",
+            "order": 3,
+            "difficulty": 1,
+            "answers": [
+              {
+                "text": "Guidelines for autoloading",
+                "isCorrect": false
+              },
+              {
+                "text": "Guidelines for code formatting",
+                "isCorrect": false
+              },
+              {
+                "text": "Guidelines for logger",
+                "isCorrect": true
+              },
+              {
+                "text": "Guidelines for PHP documentation",
+                "isCorrect": false
+              }
+            ]
+          }
+        ]
       },
       {
         "name":"Symfony"

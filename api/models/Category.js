@@ -10,12 +10,12 @@ module.exports = {
     attributes: {
         name: {
             type: 'string'
-        }
+        },
 
-        /*questions: {
+        questions: {
             collection: 'question',
             via: 'category'
-        }*/
+        }
     }
 };
 
