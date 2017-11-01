@@ -1,0 +1,16 @@
+<div class="default-page">
+  <div class="header">
+    <h1 id="main-title" class="container"><%= __('Technical test') %></h1>
+  </div>
+  <div>
+      <p><%= __('This webapp is a technical test. It will ask several questions on differents topics (PHP, Javascript, Databases, ...)') %></p>
+      <p><%= __('Simply fill in your firstname and lastname below then hit the start button in order start the test') %></p>
+      <div>
+        <form action="/quiz/register" method="post">
+          <input type="text" placeholder="firstname" name="firstname" required=true/>
+          <input type="text" placeholder="lastname" name="lastname" required=true/>
+          <input type="submit" value="start"/>
+        </form>
+      </div>
+  </div>
+</div>
