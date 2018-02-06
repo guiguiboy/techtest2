@@ -14,6 +14,10 @@ module.exports = {
       lastname: {
           type: 'string'
       },
+      email: {
+          type: 'email',
+          unique: true
+      },
       registrationDate: {
           type: 'string'
       },

@@ -17,13 +17,35 @@ module.exports = {
         );
     },
 
+    show: function(req, res)
+    {
+        return res.view(
+            'quizShow.ejs',
+            {
+                date: new Date()
+            }
+        );
+    },
+
+
+    /*
+    API route
+     */
     register: function (req, res) {
+        var userValues = {};
+        userValues.firstname = req.body.firstname;
+        userValues.lastname = req.body.lastname;
+        userValues.email = req.body.email;
 
-        console.log(req.body);
+        User.create(userValues).exec(function (err, finn){
+            if (err) {
+                return res.serverError(err);
+            }
 
-        //that's it for the moment, @todo next time
-        //create the new user
-        //compute register date
-        //redirect to quiz page 1
+            sails.log('User\'s id is:', finn.id);
+            return res.json(200, {
+                status: 'ok'
+            });
+        });
     }
 };

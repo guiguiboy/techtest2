@@ -6,11 +6,77 @@
       <p><%= __('This webapp is a technical test. It will ask several questions on differents topics (PHP, Javascript, Databases, ...)') %></p>
       <p><%= __('Simply fill in your firstname and lastname below then hit the start button in order start the test') %></p>
       <div>
-        <form action="/quiz/register" method="post">
-          <input type="text" placeholder="firstname" name="firstname" required=true/>
-          <input type="text" placeholder="lastname" name="lastname" required=true/>
-          <input type="submit" value="start"/>
+        <form action="/quiz/register" method="post" id="register_form">
+          <input type="text" id="register_firstname" placeholder="firstname" name="firstname" required="false"/>
+          <input type="text" id="register_lastname" placeholder="lastname" name="lastname" required="false"/>
+          <input type="text" id="register_email" placeholder="Email" name="email" required="true" />
+          <input type="submit" value="start" id="register_submit"/>
         </form>
       </div>
   </div>
 </div>
+
+<script type="text/javascript">
+
+    document.addEventListener("DOMContentLoaded", function(){
+        var registerForm = document.getElementById('register_form'),
+            registerFirstname = document.getElementById('register_firstname'),
+            registerEmail = document.getElementById('register_email'),
+            registerLastname = document.getElementById('register_lastname');
+
+        registerForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            var onSuccessHandler = function(json) {
+                alert(json);
+                alert(json);
+                /**
+                 * that's it for today.
+                 * for next time : redirect to a new page that will hold ALL the questions
+                 * Create a route that will return JSON with all the questions per category
+                 * Of course, do not include the correct attribute or anyone with a console could get 100%
+                 * Then add a new route in order to post the data. Remember, you'll need the email in order to retrieve
+                 * the user. Maybe in localstorage ?
+                 *
+                 */
+            };
+
+            let jsonRequestCreateUser = new JsonRequest('POST', '/quiz/register', onSuccessHandler);
+            var data = JSON.stringify(
+                {
+                    "firstname": registerFirstname.value,
+                    "lastname": registerLastname.value,
+                    "email": registerEmail.value
+                }
+            );
+            jsonRequestCreateUser.send(data);
+
+        });
+    });
+
+    class JsonRequest
+    {
+        constructor(method, route, onSuccessHandler) {
+            this.xhr = new XMLHttpRequest();
+            this.xhr.open(method, route, true);
+            this.xhr.setRequestHeader("Content-type", "application/json");
+
+            console.log(onSuccessHandler);
+
+            if (typeof onSuccessHandler === 'undefined') {
+                onSuccessHandler = function (json) {};
+            }
+            this.xhr.onreadystatechange = function () {
+                if (this.xhr.readyState === 4 && this.xhr.status === 200) {
+                    var json = JSON.parse(this.xhr.responseText);
+                    onSuccessHandler(json);
+                }
+            }.bind(this);
+        }
+
+        send(data) {
+            this.xhr.send(data);
+        }
+    }
+
+</script>
